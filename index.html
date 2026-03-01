@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ultra Premium Portfolio</title>
 <style>
+/* Ensure sections are visible below fixed nav */
+#projects, #contact, #home {
+  scroll-margin-top: 100px; /* adjust based on your nav height */
+}
 :root{
   --bg:#0f172a;
   --card:rgba(255,255,255,0.08);
@@ -90,11 +94,11 @@ footer{text-align:center;padding:30px;opacity:.6;}
 <body>
 
 <nav>
-  <<h2 onclick="goHome()" style="cursor:pointer;">UltraPortfolio</h2>
+  <h2 onclick="goHome()" style="cursor:pointer;">UltraPortfolio</h2>
   <ul>
-    <li><a href="#home">Home</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#home" onclick="goHome()">Home</a></li>
+    <li><a href="#projects" onclick="navigateTo('projects')">Projects</a></li>
+    <li><a href="#contact" onclick="navigateTo('contact')">Contact</a></li>
   </ul>
   <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -142,7 +146,6 @@ footer{text-align:center;padding:30px;opacity:.6;}
     <h2>Technologies Used</h2>
     <p>HTML5, CSS3, Responsive Grid Layout, Modern UI Effects</p>
   </div>
-  <a href="#" class="btn" onclick="closeProject()">⬅ Back to Portfolio</a>
 </div>
 
 <div id="mobileapp" class="project-page">
@@ -155,7 +158,6 @@ footer{text-align:center;padding:30px;opacity:.6;}
     <h2>Deliverables</h2>
     <p>UI Screens, Interactive Prototypes, Style Guide</p>
   </div>
-  <a href="#" class="btn" onclick="closeProject()">⬅ Back to Portfolio</a>
 </div>
 
 <div id="brand" class="project-page">
@@ -168,7 +170,6 @@ footer{text-align:center;padding:30px;opacity:.6;}
     <h2>Deliverables</h2>
     <p>Logo System, Brand Book, Social Media Kit, Visual Assets</p>
   </div>
-  <a href="#" class="btn" onclick="closeProject()">⬅ Back to Portfolio</a>
 </div>
 
 <section class="contact" id="contact">
@@ -182,6 +183,17 @@ footer{text-align:center;padding:30px;opacity:.6;}
 <footer>© 2026 Ultra Portfolio | Designed with Precision</footer>
 
 <script>
+function navigateTo(sectionId){
+  // Show all main sections again
+  document.querySelectorAll('section').forEach(el=>el.style.display='block');
+  // Hide project pages
+  document.querySelectorAll('.project-page').forEach(p=>{
+    p.style.display='none';
+    p.classList.remove('active');
+  });
+  // Smooth scroll to the chosen section
+  document.getElementById(sectionId).scrollIntoView({behavior:'smooth'});
+}
 // Apply saved theme on load
 window.addEventListener("DOMContentLoaded", () => {
   if(localStorage.getItem("theme") === "light"){
@@ -201,6 +213,17 @@ function toggleTheme(){
   } else {
     localStorage.setItem("theme", "dark");
   }
+}
+function goHome(){
+  // Show all main sections again
+  document.querySelectorAll('section').forEach(el=>el.style.display='block');
+  // Hide any project preview pages
+  document.querySelectorAll('.project-page').forEach(p=>{
+    p.style.display='none';
+    p.classList.remove('active');
+  });
+  // Smooth scroll back to the hero section
+  document.getElementById("home").scrollIntoView({behavior:'smooth'});
 }
 
 function openProject(id){
