@@ -90,7 +90,7 @@ footer{text-align:center;padding:30px;opacity:.6;}
 <body>
 
 <nav>
-  <h2>UltraPortfolio</h2>
+  <h2 onclick="goHome()" style="cursor:pointer;">UltraPortfolio</h2>
   <ul>
     <li><a href="#home">Home</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -193,16 +193,6 @@ function toggleMenu(){
   document.querySelector("nav ul").classList.toggle("show");
 }
 
-function toggleTheme(){
-  document.body.classList.toggle("light-theme");
-  // Save preference
-  if(document.body.classList.contains("light-theme")){
-    localStorage.setItem("theme", "light");
-  } else {
-    localStorage.setItem("theme", "dark");
-  }
-}
-
 function openProject(id){
   document.querySelectorAll('section').forEach(el=>el.style.display='none');
   document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
@@ -220,8 +210,25 @@ function closeProject(){
 
 function toggleTheme(){
   document.body.classList.toggle("light-theme");
+  // Save preference
+  if(document.body.classList.contains("light-theme")){
+    localStorage.setItem("theme", "light");
+  } else {
+    localStorage.setItem("theme", "dark");
+  }
+}
+
+}
+<function goHome(){
+  // Show all sections again
+  document.querySelectorAll('section').forEach(el=>el.style.display='block');
+  // Hide project pages
+  document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
+  // Smooth scroll back to home
+  document.getElementById("home").scrollIntoView({behavior:'smooth'});
 }
 </script>
+
 
 </body>
 </html>
