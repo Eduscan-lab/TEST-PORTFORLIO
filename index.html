@@ -55,7 +55,7 @@ footer{text-align:center;padding:30px;opacity:.6;}
 
 /* CONTACT FORM */
 .contact form{max-width:500px;margin:30px auto;display:flex;flex-direction:column;gap:15px;}
-.contact input,.contact textarea{padding:12px;border:none;border-radius:10px;font-size:1rem;outline:none;}
+.contact input,.contact textarea{width:100%;padding:12px;border:none;border-radius:10px;font-size:1rem;outline:none;background:#fff;color:#000;}
 .contact input:focus,.contact textarea:focus{box-shadow:0 0 8px var(--accent);}
 .contact button{cursor:pointer;}
 </style>
@@ -156,9 +156,3 @@ footer{text-align:center;padding:30px;opacity:.6;}
 
 <script>
 function openProject(id){
-  document.querySelectorAll('.project-page').forEach(p=>p.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  window.scrollTo({top:0,behavior:'smooth'});
-}
-function closeProject(){
-  document.querySelectorAll('.project
