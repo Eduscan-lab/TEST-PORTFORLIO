@@ -15,38 +15,88 @@
   --text:#ffffff;
   --accent:#00f5ff;
   --glass:rgba(255,255,255,0.06);
+  --contact-purple:#c084fc;
+  --project-blue:#38bdf8; /* light blue for dark mode */
 }
-/* Center the contact section */
+/* Contact Section */
 .contact {
   display: flex;
   flex-direction: column;
   justify-content: center;   /* vertical centering */
   align-items: center;       /* horizontal centering */
-  min-height: 100vh;         /* take full screen height */
-  text-align: center;        /* center text inside */
-  padding: 20px;
+  min-height: 100vh;
+  padding: 40px;
+  background: linear-gradient(135deg, #0f172a, #1e293b); /* subtle dark gradient */
+}
+.contact h2{
+  margin-bottom:20px;
+  color:var(--contact-purple);
 }
 
-.contact h2 {
-  margin-bottom: 20px;
-  text-align: center;        /* center the heading text */
-  width: 100%;               /* ensure heading spans full width */
-}
 .contact .info {
-  background: var(--card);
+  background: rgba(255, 255, 255, 0.08); /* frosted glass card */
   padding: 30px;
   border-radius: 20px;
   max-width: 500px;
   width: 100%;
-  text-align: center;        /* center text inside the box */
-  margin: 0 auto;            /* center the box itself */
+  text-align: center;
+  margin: 0 auto;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
-.light-theme{
-  --bg:#f1f5f9;
-  --card:#ffffff;
-  --text:#0f172a;
-  --accent:#2563eb;
-  --glass:rgba(0,0,0,0.05);
+
+.contact p{
+  margin:10px 0;
+  font-size:1.1rem;
+  color:var(--contact-purple);
+}
+.light-theme {
+  --bg: #94a3b8;              /* medium slate gray-blue background */
+  --card: #cbd5e1;            /* lighter slate card */
+  --text: #0f172a;            /* deep navy text */
+  --accent: #3b82f6;          /* medium blue accent */
+  --glass: rgba(148,163,184,0.25); /* tinted glass effect */
+  --contact-purple:#6b21a8;
+  --project-blue:#1e40af; /* dark blue for light mode */
+}
+
+.dark-theme {
+  --bg: #0a192f;              /* deep navy background */
+  --card: rgba(255,255,255,0.08);
+  --text: #e2e8f0;            /* light text */
+  --accent: #00c6ff;          /* bright blue accent */
+  --glass: rgba(255,255,255,0.05);
+}
+/* Scoped aesthetic for project pages */
+.project-page {
+  display: none;
+  padding: 40px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a192f, #1e293b, #334155);
+  border-radius: 12px;
+}
+
+/* Main project title */
+.project-page h1 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: var(--project-blue);
+  text-align: left;
+}
+
+/* Subheadings */
+.project-page h2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: var(--project-blue);
+  text-align: left;
+}
+
+/* Paragraphs */
+.project-page p {
+  font-size: 1.1rem;
+  color: var(--project-blue);
+  text-align: left;
 }
 
 /* GLOBAL */
@@ -120,8 +170,8 @@ footer{text-align:center;padding:30px;opacity:.6;}
 <nav>
   <h2 onclick="goHome()" style="cursor:pointer;">UltraPortfolio</h2>
   <ul>
-    <li><a href="#projects" onclick="navigateTo('projects')">Projects</a></li>
-    <li><a href="#contact" onclick="navigateTo('contact')">Contact</a></li>
+    <li><a href="#projects" onclick="navigateTo('projects')"><h2>Projects</h2></a></li>
+    <li><a href="#contact" onclick="navigateTo('contact')"><h2>Contact</h2></a></li>
   </ul>
   <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
@@ -196,11 +246,11 @@ footer{text-align:center;padding:30px;opacity:.6;}
 </div>
 
 <section class="contact" id="contact">
-  <h2 style="text-align:center">Contact Me</h2>
+  <h2 style="text-align:center">Contacts</h2>
   <div class="info">
-    <p><strong>Name:</strong> Mark Ruzelle I. Ulo</p>
-    <p><strong>Email:</strong> markruzelle8@gmail.com</p>
-    <p><strong>Message:</strong> "This is a test portfolio website hope you understand"</p>
+    <p><strong>Mark Ruzelle I. Ulo</strong></p>
+    <p><strong> markruzelle8@gmail.com</strong></p>
+    <p><strong>This is a test portfolio website hope you understand</strong></p>
   </div>
 </section>
 <footer>© 2026 Ultra Portfolio | Designed with Precision</footer>
@@ -228,13 +278,14 @@ function toggleMenu(){
   document.querySelector("nav ul").classList.toggle("show");
 }
 
-function toggleTheme(){
-  document.body.classList.toggle("light-theme");
-  // Save preference
-  if(document.body.classList.contains("light-theme")){
-    localStorage.setItem("theme", "light");
+function toggleTheme() {
+  const body = document.body;
+  if (body.classList.contains("light-theme")) {
+    body.classList.remove("light-theme");
+    body.classList.add("dark-theme");
   } else {
-    localStorage.setItem("theme", "dark");
+    body.classList.remove("dark-theme");
+    body.classList.add("light-theme");
   }
 }
 function goHome(){
