@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ultra Premium Portfolio</title>
 <style>
-/* ================= ROOT VARIABLES ================= */
 :root{
   --bg:#0f172a;
   --card:rgba(255,255,255,0.08);
@@ -19,7 +18,7 @@
   --text:#0f172a;
 }
 
-/* ================= GLOBAL ================= */
+/* GLOBAL */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);overflow-x:hidden;transition:.4s;}
 nav{position:fixed;width:100%;padding:15px 8%;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(15px);background:var(--glass);z-index:1000;}
@@ -41,24 +40,24 @@ section{padding:100px 8%;}
 footer{text-align:center;padding:30px;opacity:.6;}
 @media(max-width:768px){.hero h1{font-size:2.3rem;}}
 
-/* ================= PROJECT PAGES ================= */
+/* PROJECT PAGES */
 .project-page{min-height:100vh;padding:80px 10%;display:none;}
 .project-page.active{display:block;}
-
-/* NextGen aesthetic */
 #nextgen{background:#0f172a;color:#fff;}
 #nextgen h1{background:linear-gradient(90deg,#00f5ff,#a855f7,#ff00cc);-webkit-background-clip:text;color:transparent;}
 #nextgen .section{background:rgba(255,255,255,0.08);padding:40px;border-radius:20px;margin-top:30px;box-shadow:0 0 20px #00f5ff;}
-
-/* MobileApp aesthetic */
 #mobileapp{background:#f9fafb;color:#111827;}
 #mobileapp h1{color:#2563eb;}
 #mobileapp .section{background:#fff;padding:40px;border-radius:20px;margin-top:30px;box-shadow:0 5px 15px rgba(0,0,0,0.1);}
-
-/* Brand aesthetic */
 #brand{background:linear-gradient(135deg,#6b21a8,#9333ea,#c026d3);color:#fff;}
 #brand h1{text-shadow:2px 2px 10px rgba(0,0,0,0.4);}
 #brand .section{background:rgba(255,255,255,0.1);padding:40px;border-radius:20px;margin-top:30px;backdrop-filter:blur(10px);}
+
+/* CONTACT FORM */
+.contact form{max-width:500px;margin:30px auto;display:flex;flex-direction:column;gap:15px;}
+.contact input,.contact textarea{padding:12px;border:none;border-radius:10px;font-size:1rem;outline:none;}
+.contact input:focus,.contact textarea:focus{box-shadow:0 0 8px var(--accent);}
+.contact button{cursor:pointer;}
 </style>
 </head>
 <body>
@@ -145,11 +144,11 @@ footer{text-align:center;padding:30px;opacity:.6;}
 
 <section class="contact" id="contact">
   <h2 style="text-align:center;">Contact Me</h2>
-  <form>
-    <input type="text" placeholder="Your Name">
-    <input type="email" placeholder="Your Email">
-    <textarea placeholder="Your Message"></textarea>
-    <button class="btn">Send Message</button>
+  <form onsubmit="return validateForm()">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+    <button type="submit" class="btn">Send Message</button>
   </form>
 </section>
 
@@ -162,10 +161,4 @@ function openProject(id){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function closeProject(){
-  document.querySelectorAll('.project-page').forEach(p=>p.classList.remove('active'));
-  window.location.hash = "#projects";
-}
-</script>
-
-</body>
-</html>
+  document.querySelectorAll('.project
