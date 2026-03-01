@@ -38,10 +38,9 @@ nav a:hover{color:var(--accent);}
 .hamburger span{width:25px;height:3px;background:var(--text);border-radius:2px;}
 
 /* HERO */
-.hero{height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;padding:20px;}
+.hero{height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;}
 .hero h1{font-size:3.5rem;background:linear-gradient(90deg,#00f5ff,#a855f7,#ff00cc);-webkit-background-clip:text;color:transparent;animation:gradientMove 6s infinite linear;background-size:200%;}
 @keyframes gradientMove{0%{background-position:0%;}100%{background-position:200%};}
-.hero p{margin-top:15px;font-size:1.2rem;}
 .btn{display:inline-block;margin-top:30px;padding:14px 30px;border-radius:30px;background:var(--accent);color:#000;font-weight:bold;text-decoration:none;transition:.3s;}
 .btn:hover{transform:scale(1.1);}
 
@@ -135,22 +134,40 @@ footer{text-align:center;padding:30px;opacity:.6;}
 <!-- PROJECT PAGES -->
 <div id="nextgen" class="project-page">
   <h1>NextGen Website</h1>
-  <div class="section"><h2>Project Overview</h2><p>A high-performance responsive platform with futuristic UI and advanced CSS animations.</p></div>
-  <div class="section"><h2>Technologies Used</h2><p>HTML5, CSS3, Responsive Grid Layout, Modern UI Effects</p></div>
+  <div class="section">
+    <h2>Project Overview</h2>
+    <p>A high-performance responsive platform with futuristic UI and advanced CSS animations.</p>
+  </div>
+  <div class="section">
+    <h2>Technologies Used</h2>
+    <p>HTML5, CSS3, Responsive Grid Layout, Modern UI Effects</p>
+  </div>
   <a href="#" class="btn" onclick="closeProject()">⬅ Back to Portfolio</a>
 </div>
 
 <div id="mobileapp" class="project-page">
   <h1>Mobile App UI</h1>
-  <div class="section"><h2>Project Overview</h2><p>A sleek mobile app interface designed with modern UX principles and responsive layouts.</p></div>
-  <div class="section"><h2>Deliverables</h2><p>UI Screens, Interactive Prototypes, Style Guide</p></div>
+  <div class="section">
+    <h2>Project Overview</h2>
+    <p>A sleek mobile app interface designed with modern UX principles and responsive layouts.</p>
+  </div>
+  <div class="section">
+    <h2>Deliverables</h2>
+    <p>UI Screens, Interactive Prototypes, Style Guide</p>
+  </div>
   <a href="#" class="btn" onclick="closeProject()">⬅ Back to Portfolio</a>
 </div>
 
 <div id="brand" class="project-page">
   <h1>Brand Identity</h1>
-  <div class="section"><h2>Project Overview</h2><p>A complete branding solution including logo creation, typography system, color psychology, and brand guidelines.</p></div>
-  <div class="section"><h2>Deliverables</h2><p>Logo System, Brand Book, Social Media Kit, Visual Assets</p></div>
+  <div class="section">
+    <h2>Project Overview</h2>
+    <p>A complete branding solution including logo creation, typography system, color psychology, and brand guidelines.</p>
+  </div>
+  <div class="section">
+    <h2>Deliverables</h2>
+    <p>Logo System, Brand Book, Social Media Kit, Visual Assets</p>
+  </div>
   <a href="#" class="btn" onclick="closeProject()">⬅ Back to Portfolio</a>
 </div>
 
@@ -162,5 +179,28 @@ footer{text-align:center;padding:30px;opacity:.6;}
     <p><strong>Message:</strong> "This is a test portfolio website hope you understand"</p>
   </div>
 </section>
+<footer>© 2026 Ultra Portfolio | Designed with Precision</footer>
 
-<footer>©
+<script>
+function openProject(id){
+  document.querySelectorAll('section').forEach(el=>el.style.display='none');
+  document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
+  const project = document.getElementById(id);
+  project.style.display='block';
+  project.classList.add('active');
+  project.scrollIntoView({behavior:'smooth'});
+}
+
+function closeProject(){
+  document.querySelectorAll('section').forEach(el=>el.style.display='block');
+  document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
+  document.getElementById("projects").scrollIntoView({behavior:'smooth'});
+}
+
+function toggleTheme(){
+  document.body.classList.toggle("light-theme");
+}
+</script>
+
+</body>
+</html>
