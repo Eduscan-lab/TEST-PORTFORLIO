@@ -16,7 +16,31 @@
   --accent:#00f5ff;
   --glass:rgba(255,255,255,0.06);
 }
+/* Center the contact section */
+.contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertical centering */
+  align-items: center;       /* horizontal centering */
+  min-height: 100vh;         /* take full screen height */
+  text-align: center;        /* center text inside */
+  padding: 20px;
+}
 
+.contact h2 {
+  margin-bottom: 20px;
+  text-align: center;        /* center the heading text */
+  width: 100%;               /* ensure heading spans full width */
+}
+.contact .info {
+  background: var(--card);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 500px;
+  width: 100%;
+  text-align: center;        /* center text inside the box */
+  margin: 0 auto;            /* center the box itself */
+}
 .light-theme{
   --bg:#f1f5f9;
   --card:#ffffff;
@@ -85,7 +109,7 @@ footer{text-align:center;padding:30px;opacity:.6;}
 }
 
 /* CONTACT INFO */
-.contact{display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;min-height:100vh;text-align:left;padding:20px;}
+.contact{display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;min-height:100vh;text-align:center;padding:20px;}
 .contact h2{margin-bottom:20px;}
 .contact .info{background:var(--card);padding:30px;border-radius:20px;max-width:500px;width:100%;}
 .contact p{margin:10px 0;font-size:1.1rem;}
@@ -172,7 +196,7 @@ footer{text-align:center;padding:30px;opacity:.6;}
 </div>
 
 <section class="contact" id="contact">
-  <h2>Contact Me</h2>
+  <h2 style="text-align:center">Contact Me</h2>
   <div class="info">
     <p><strong>Name:</strong> Mark Ruzelle I. Ulo</p>
     <p><strong>Email:</strong> markruzelle8@gmail.com</p>
