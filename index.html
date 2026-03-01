@@ -182,6 +182,27 @@ footer{text-align:center;padding:30px;opacity:.6;}
 <footer>© 2026 Ultra Portfolio | Designed with Precision</footer>
 
 <script>
+// Apply saved theme on load
+window.addEventListener("DOMContentLoaded", () => {
+  if(localStorage.getItem("theme") === "light"){
+    document.body.classList.add("light-theme");
+  }
+});
+
+function toggleMenu(){
+  document.querySelector("nav ul").classList.toggle("show");
+}
+
+function toggleTheme(){
+  document.body.classList.toggle("light-theme");
+  // Save preference
+  if(document.body.classList.contains("light-theme")){
+    localStorage.setItem("theme", "light");
+  } else {
+    localStorage.setItem("theme", "dark");
+  }
+}
+
 function openProject(id){
   document.querySelectorAll('section').forEach(el=>el.style.display='none');
   document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
