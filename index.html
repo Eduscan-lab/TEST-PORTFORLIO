@@ -13,15 +13,6 @@
   --glass:rgba(255,255,255,0.06);
 }
 
-/* Light mode overrides */
-#mode:checked ~ body{
-  --bg:#f1f5f9;
-  --card:#ffffff;
-  --text:#0f172a;
-  --accent:#2563eb;
-  --glass:rgba(0,0,0,0.05);
-}
-
 /* GLOBAL */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);overflow-x:hidden;transition:.4s;}
@@ -30,7 +21,7 @@ nav h2{background:linear-gradient(90deg,#00f5ff,#a855f7,#ff00cc);-webkit-backgro
 nav ul{list-style:none;display:flex;gap:30px;}
 nav a{text-decoration:none;color:var(--text);transition:.3s;}
 nav a:hover{color:var(--accent);}
-.toggle{cursor:pointer;padding:6px 15px;border-radius:20px;background:var(--card);}
+.toggle{cursor:not-allowed;padding:6px 15px;border-radius:20px;background:var(--card);opacity:.5;pointer-events:none;} /* enabled toggle */
 .hero{height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;}
 .hero h1{font-size:3.5rem;background:linear-gradient(90deg,#00f5ff,#a855f7,#ff00cc);-webkit-background-clip:text;color:transparent;animation:gradientMove 6s infinite linear;background-size:200%;}
 @keyframes gradientMove{0%{background-position:0%;}100%{background-position:200%};}
@@ -71,7 +62,6 @@ footer{text-align:center;padding:30px;opacity:.6;}
 </head>
 <body>
 
-<input type="checkbox" id="mode" hidden>
 <nav>
   <h2>UltraPortfolio</h2>
   <ul>
@@ -79,7 +69,7 @@ footer{text-align:center;padding:30px;opacity:.6;}
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <label for="mode" class="toggle">🌙 / ☀</label>
+  <label class="toggle">🌙 / ☀</label> <!-- disabled -->
 </nav>
 
 <section class="hero" id="home">
@@ -164,17 +154,19 @@ footer{text-align:center;padding:30px;opacity:.6;}
 
 <script>
 function openProject(id){
-  // Hide all project pages
+  // Hide everything except nav and the chosen project
+  document.querySelectorAll('section, .project-page').forEach(el=>el.style.display='none');
   document.querySelectorAll('.project-page').forEach(p=>p.classList.remove('active'));
-  // Show the selected project
   const project = document.getElementById(id);
+  project.style.display='block';
   project.classList.add('active');
-  // Scroll directly to it
   project.scrollIntoView({behavior:'smooth'});
 }
 
 function closeProject(){
-  document.querySelectorAll('.project-page').forEach(p=>p.classList.remove('active'));
+  // Show all sections again
+  document.querySelectorAll('section').forEach(el=>el.style.display='block');
+  document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
   document.getElementById("projects").scrollIntoView({behavior:'smooth'});
 }
 </script>
