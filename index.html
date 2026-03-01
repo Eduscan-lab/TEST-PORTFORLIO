@@ -22,6 +22,15 @@
 }
 
 /* GLOBAL */
+/* MOBILE OPTIMIZATION */
+@media(max-width:768px){
+  nav ul{display:none;flex-direction:column;gap:15px;width:100%;}
+  nav ul.show{display:flex;}
+  .hamburger{display:flex;}
+  .hero h1{font-size:2rem;}
+  .hero p{font-size:0.9rem;}
+  .hero .btn{width:100%;max-width:280px;text-align:center;}
+  
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);overflow-x:hidden;transition:.4s;}
 nav{position:fixed;width:100%;padding:15px 8%;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(15px);background:var(--glass);z-index:1000;}
