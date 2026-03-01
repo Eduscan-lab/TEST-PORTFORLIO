@@ -24,53 +24,71 @@
 /* GLOBAL */
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;scroll-behavior:smooth;}
 body{background:var(--bg);color:var(--text);overflow-x:hidden;transition:.4s;}
+
+/* NAVIGATION */
 nav{position:fixed;width:100%;padding:15px 8%;display:flex;justify-content:space-between;align-items:center;backdrop-filter:blur(15px);background:var(--glass);z-index:1000;}
 nav h2{background:linear-gradient(90deg,#00f5ff,#a855f7,#ff00cc);-webkit-background-clip:text;color:transparent;}
-nav ul{list-style:none;display:flex;gap:30px;}
+nav ul{list-style:none;display:flex;gap:30px;transition:.3s;}
 nav a{text-decoration:none;color:var(--text);transition:.3s;}
 nav a:hover{color:var(--accent);}
 .toggle{cursor:pointer;padding:6px 15px;border-radius:20px;background:var(--card);user-select:none;}
-.hero{height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;cursor:pointer;gap:5px;}
+.hamburger span{width:25px;height:3px;background:var(--text);border-radius:2px;}
+
+/* HERO */
+.hero{height:100vh;display:flex;justify-content:center;align-items:center;text-align:center;padding:20px;}
 .hero h1{font-size:3.5rem;background:linear-gradient(90deg,#00f5ff,#a855f7,#ff00cc);-webkit-background-clip:text;color:transparent;animation:gradientMove 6s infinite linear;background-size:200%;}
 @keyframes gradientMove{0%{background-position:0%;}100%{background-position:200%};}
+.hero p{margin-top:15px;font-size:1.2rem;}
 .btn{display:inline-block;margin-top:30px;padding:14px 30px;border-radius:30px;background:var(--accent);color:#000;font-weight:bold;text-decoration:none;transition:.3s;}
 .btn:hover{transform:scale(1.1);}
+
+/* SECTIONS */
 section{padding:100px 8%;}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
 .card{background:var(--card);backdrop-filter:blur(12px);padding:30px;border-radius:20px;transition:.4s;position:relative;overflow:hidden;}
 .card:hover{transform:translateY(-15px);}
 .card h3{margin-bottom:15px;}
 footer{text-align:center;padding:30px;opacity:.6;}
-@media(max-width:768px){.hero h1{font-size:2.3rem;}}
+
+/* MOBILE OPTIMIZATION */
+@media(max-width:768px){
+  nav ul{display:none;flex-direction:column;gap:15px;width:100%;background:var(--glass);padding:20px;border-radius:10px;}
+  nav ul.show{display:flex;animation:slideIn .3s ease;}
+  .hamburger{display:flex;}
+  .hero h1{font-size:2.3rem;}
+  .hero p{font-size:0.9rem;}
+  .btn{width:100%;max-width:280px;text-align:center;}
+}
+
+@keyframes slideIn{
+  from{opacity:0;transform:translateY(-20px);}
+  to{opacity:1;transform:translateY(0);}
+}
 
 /* PROJECT PAGES */
-.project-page{min-height:100vh;padding:80px 10%;display:none;}
-.project-page.active{display:block;}
+.project-page{min-height:100vh;padding:80px 10%;display:none;opacity:0;transition:opacity .5s ease;}
+.project-page.active{display:block;opacity:1;}
 .project-page .section{background:var(--card);padding:40px;border-radius:20px;margin-top:30px;}
 
-/* CONTACT INFO - LEFT ALIGNED */
-.contact{
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;   /* keep content at the top */
-  align-items:flex-start;       /* align to the left */
-  min-height:100vh;
-  text-align:left;              /* text aligned left */
-  padding:20px;                 /* spacing from edges */
+/* Center project content on mobile */
+@media(max-width:768px){
+  .project-page {text-align:center;padding:60px 5%;}
+  .project-page h1 {font-size:1.8rem;margin-bottom:20px;}
+  .project-page .section {margin:20px auto;text-align:center;max-width:90%;}
+  .project-page .btn {margin:30px auto 0;display:block;}
 }
+
+/* CONTACT INFO */
+.contact{display:flex;flex-direction:column;justify-content:flex-start;align-items:flex-start;min-height:100vh;text-align:left;padding:20px;}
 .contact h2{margin-bottom:20px;}
-.contact .info{
-  background:var(--card);
-  padding:30px;
-  border-radius:20px;
-  max-width:500px;
-  width:100%;
-}
+.contact .info{background:var(--card);padding:30px;border-radius:20px;max-width:500px;width:100%;}
 .contact p{margin:10px 0;font-size:1.1rem;}
 </style>
 </head>
 <body>
-
 
 <nav>
   <h2>UltraPortfolio</h2>
@@ -79,6 +97,9 @@ footer{text-align:center;padding:30px;opacity:.6;}
     <li><a href="#projects">Projects</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
   <span class="toggle" onclick="toggleTheme()">🌙 / ☀</span>
 </nav>
 
@@ -114,40 +135,22 @@ footer{text-align:center;padding:30px;opacity:.6;}
 <!-- PROJECT PAGES -->
 <div id="nextgen" class="project-page">
   <h1>NextGen Website</h1>
-  <div class="section">
-    <h2>Project Overview</h2>
-    <p>A high-performance responsive platform with futuristic UI and advanced CSS animations.</p>
-  </div>
-  <div class="section">
-    <h2>Technologies Used</h2>
-    <p>HTML5, CSS3, Responsive Grid Layout, Modern UI Effects</p>
-  </div>
+  <div class="section"><h2>Project Overview</h2><p>A high-performance responsive platform with futuristic UI and advanced CSS animations.</p></div>
+  <div class="section"><h2>Technologies Used</h2><p>HTML5, CSS3, Responsive Grid Layout, Modern UI Effects</p></div>
   <a href="#" class="btn" onclick="closeProject()">⬅ Back to Portfolio</a>
 </div>
 
 <div id="mobileapp" class="project-page">
   <h1>Mobile App UI</h1>
-  <div class="section">
-    <h2>Project Overview</h2>
-    <p>A sleek mobile app interface designed with modern UX principles and responsive layouts.</p>
-  </div>
-  <div class="section">
-    <h2>Deliverables</h2>
-    <p>UI Screens, Interactive Prototypes, Style Guide</p>
-  </div>
+  <div class="section"><h2>Project Overview</h2><p>A sleek mobile app interface designed with modern UX principles and responsive layouts.</p></div>
+  <div class="section"><h2>Deliverables</h2><p>UI Screens, Interactive Prototypes, Style Guide</p></div>
   <a href="#" class="btn" onclick="closeProject()">⬅ Back to Portfolio</a>
 </div>
 
 <div id="brand" class="project-page">
   <h1>Brand Identity</h1>
-  <div class="section">
-    <h2>Project Overview</h2>
-    <p>A complete branding solution including logo creation, typography system, color psychology, and brand guidelines.</p>
-  </div>
-  <div class="section">
-    <h2>Deliverables</h2>
-    <p>Logo System, Brand Book, Social Media Kit, Visual Assets</p>
-  </div>
+  <div class="section"><h2>Project Overview</h2><p>A complete branding solution including logo creation, typography system, color psychology, and brand guidelines.</p></div>
+  <div class="section"><h2>Deliverables</h2><p>Logo System, Brand Book, Social Media Kit, Visual Assets</p></div>
   <a href="#" class="btn" onclick="closeProject()">⬅ Back to Portfolio</a>
 </div>
 
@@ -160,28 +163,4 @@ footer{text-align:center;padding:30px;opacity:.6;}
   </div>
 </section>
 
-<footer>© 2026 Ultra Portfolio | Designed with Precision</footer>
-
-<script>
-function openProject(id){
-  document.querySelectorAll('section').forEach(el=>el.style.display='none');
-  document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
-  const project = document.getElementById(id);
-  project.style.display='block';
-  project.classList.add('active');
-  project.scrollIntoView({behavior:'smooth'});
-}
-
-function closeProject(){
-  document.querySelectorAll('section').forEach(el=>el.style.display='block');
-  document.querySelectorAll('.project-page').forEach(p=>p.style.display='none');
-  document.getElementById("projects").scrollIntoView({behavior:'smooth'});
-}
-
-function toggleTheme(){
-  document.body.classList.toggle("light-theme");
-}
-</script>
-
-</body>
-</html>
+<footer>©
