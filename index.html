@@ -18,6 +18,13 @@
   --contact-purple:#c084fc;
   --project-blue:#38bdf8; /* light blue for dark mode */
 }
+.hero-image {
+  margin-top: 30px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
 /* Contact Section */
 .contact {
   display: flex;
@@ -170,7 +177,7 @@ footer{text-align:center;padding:30px;opacity:.6;}
 <nav>
   <h2 onclick="goHome()" style="cursor:pointer;">FilFish Co.</h2>
   <ul>
-    <li><a href="#projects" onclick="navigateTo('Menus')"><h2>Menu</h2></a></li>
+    <li><a href="#projects" onclick="navigateTo('projects')"><h2>Menus</h2></a></li>
     <li><a href="#contact" onclick="navigateTo('contact')"><h2>Contact</h2></a></li>
   </ul>
   <div class="hamburger" onclick="toggleMenu()">
@@ -181,13 +188,14 @@ footer{text-align:center;padding:30px;opacity:.6;}
 
 <section class="hero" id="home">
   <div>
-    <h1>Nutritious Products</h1>
-    <p>Giving new experience for those who want healthy</p>
-    <a href="#projects" class="btn">Explore Work</a>
+    <h1>Where Healthy<br>Meets Flavor</h1>
+    <p>Discover meals, drinks, and snacks crafted to <br> fuel your body and delight your taste.</p>
+    <a href="#projects" class="btn">Explore Menu</a><br>
+	<img src="WEB/filfishlogo" alt="Filfish Logo" class="hero-image">
   </div>
 </section>
 
-<section id="Menus">
+<section id="projects">
   <h2 style="text-align:center;margin-bottom:50px;">Featured Menus</h2>
   <div class="grid">
     <div class="card">
@@ -210,38 +218,50 @@ footer{text-align:center;padding:30px;opacity:.6;}
 
 <!-- PROJECT PAGES -->
 <div id="nextgen" class="project-page">
-  <h1>NextGen Website</h1>
+  <h1>Wholesome Meals</h1>
   <div class="section">
-    <h2>Project Overview</h2>
-    <p>A high-performance responsive platform with futuristic UI and advanced CSS animations.</p>
+    <h2>Grilled Herb Fish Bowl</h2>
+    <p>served with quinoa, steamed broccoli, and lemon dressing</p>
   </div>
   <div class="section">
-    <h2>Technologies Used</h2>
-    <p>HTML5, CSS3, Responsive Grid Layout, Modern UI Effects</p>
+    <h2>Protein Power Salad</h2>
+    <p>mixed greens, chickpeas, grilled chicken or fish, topped with flaxseed</p>
+  </div>
+  <div class="section">
+    <h2>Hearty Lentil & Veggie Soup</h2>
+    <p>slow-cooked with carrots, celery, and spices</p>
   </div>
 </div>
 
 <div id="mobileapp" class="project-page">
-  <h1>Mobile App UI</h1>
+  <h1> Nutri-Boost Drinks</h1>
   <div class="section">
-    <h2>Project Overview</h2>
-    <p>A sleek mobile app interface designed with modern UX principles and responsive layouts.</p>
+    <h2>Green Glow Smoothie</h2>
+    <p>spinach, banana, spirulina, chia seeds</p>
   </div>
   <div class="section">
-    <h2>Deliverables</h2>
-    <p>UI Screens, Interactive Prototypes, Style Guide</p>
+    <h2>Tropical Vitality Shake</h2>
+    <p>mango, pineapple, Greek yogurt, and whey protein</p>
+  </div>
+    <div class="section">
+    <h2>Herbal Calm Tea</h2>
+    <p>chamomile, ginger, and lemongrass infusion</p>
   </div>
 </div>
 
 <div id="brand" class="project-page">
-  <h1>Brand Identity</h1>
+  <h1>Smart Snacks</h1>
   <div class="section">
-    <h2>Project Overview</h2>
-    <p>A complete branding solution including logo creation, typography system, color psychology, and brand guidelines.</p>
+    <h2>Omega Trail Mix</h2>
+    <p>walnuts, almonds, dried cranberries, and pumpkin seeds</p>
   </div>
   <div class="section">
-    <h2>Deliverables</h2>
-    <p>Logo System, Brand Book, Social Media Kit, Visual Assets</p>
+    <h2>Baked Veggie Chips</h2>
+    <p>sweet potato, beetroot, and zucchini crisps</p>
+  </div>
+  <div class="section">
+    <h2>Protein Energy Bar</h2>
+    <p>oats, honey, peanut butter, and whey protein</p>
   </div>
 </div>
 
